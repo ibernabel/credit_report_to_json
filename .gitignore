@@ -175,3 +175,9 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+
+#Custom
+credit_reports/
+reporting.py
+find_text.py
+datos_personales.py
