@@ -104,7 +104,7 @@ consultation_time = text[consultation_time_index + 6 : credit_score_report_type_
 inquirer.update({"tipo de consulta": credit_score_report_type, "suscriptor": subscriber, "usuario": user, "fecha consulta": consultation_date, "hora consulta":consultation_time })
 
 #personal data variables:
-personal_data ={}
+personal_data = {}
 identification = text[identification_index + 8 : identification_index + 21]
 names = text[names_index + 8 : lastnames_index - 1]
 lastnames = text[lastnames_index + 10 : birthday_index - 1]
@@ -134,17 +134,37 @@ if is_credit_score_report_type:
 	score = {}
 	score.update({"scoring": scoring, "factors": factors})
 	#print(score)
-#building summary table
+
+#building summary open accounts table
+summary_open_accounts = [] # Table. A list of dicctionaries that represent a each row of data in the original table
 summary_of_open_accounts_list = summary_of_open_accounts_text.split('\n')
-first_subscriber_row = 17
-last_subscriber_end = summary_of_open_accounts_list.index("total general >>")
-suscriber_rows_cout = ( last_subscriber_end - first_subscriber_row ) / 11
+first_subscriber_row_start_index = 17 #Index where the headers of de table ends
+last_subscriber_row_end_index = summary_of_open_accounts_list.index("total general >>")
+suscriber_rows_count = ( last_subscriber_row_end_index - first_subscriber_row_start_index ) / 11 # Eache group of data in a row has 11 '\n'
 
-def summary_table_dictionary():
-	for index, element in enumerate(summary_of_open_accounts_list):
+summary_open_accounts_headers =  ["subscriber", "accounts_amount", "account_type", "credit_amount_dop", "credit_amount_usd", "current_balance_dop", "current_balance_usd","current_overdue_dop", "current_overdue_usd","utilization_percent_dop", "utilization_percent_usd"]
+
+def create_summary_open_accounts_table():
+
+	for i in range(first_subscriber_row_start_index, last_subscriber_row_end_index, 11 ):
+		summary_open_accounts_rows = {}	
+
+		for j in range(i, i + 11, 1):
+			summary_open_accounts_rows.update({summary_open_accounts_headers[j - i] : summary_of_open_accounts_list[j]})
 		
+		summary_open_accounts.append(summary_open_accounts_rows)
 
-#    {"subscriber": "", "accounts_amount": "", "account_type": "", "credit_amount_dop": "", "credit_amount_usd": "", "current_balance_dop": "", "current_balance_usd": "","current_overdue_dop": "", "current_overdue_usd": "","utilization_percent_dop": "", "utilization_percent_usd": ""}
+create_summary_open_accounts_table()
+
+print(len(summary_open_accounts))
+print(f'summary_open_accounts = {summary_open_accounts}')
+
+#print(summary_open_accounts[0]["subscriber"])
+#print(summary_open_accounts[1]["subscriber"])
+#print(summary_open_accounts[2]["subscriber"])
+#print(summary_open_accounts[3]["subscriber"])
+
+#{"subscriber": "", "accounts_amount": "", "account_type": "", "credit_amount_dop": "", "credit_amount_usd": "", "current_balance_dop": "", "current_balance_usd": "","current_overdue_dop": "", "current_overdue_usd": "","utilization_percent_dop": "", "utilization_percent_usd": ""}
 
 #subscriber
 #accounts_amount
@@ -167,9 +187,11 @@ def summary_table_dictionary():
 #print(personal_data["direcciones"][0].title())
 #print(summary_of_open_accounts_list[60])
 #print(summary_of_open_accounts_list.index("banreservas"))
-print(first_subscriber_row)
-print(last_subscriber_end)
-print(suscriber_rows_cout)
+
+#print(first_subscriber_row_start_index)
+#print(last_subscriber_row_end_index)
+#print(suscriber_rows_count)
+
 #print(len(summary_of_open_accounts_list))
 
 #print(text.count("puntuacion"))
