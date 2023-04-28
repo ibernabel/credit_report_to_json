@@ -1,0 +1,163 @@
+rnc 101-65988-2
+ave. abraham lincoln 1019,
+ensanche piantini
+santo domingo, r. d.
+tel. 809-227-1888
+tel. 1-809-200-2930
+fax 809-549-7227
+www.transunion.com.do
+suscriptor: soluciones fix y medina srl
+usuario:
+henrys medina alvarez
+fecha:
+16/12/2022
+hora:
+03:30 pm
+historia de credito de individuo
+datos personales
+cedula #402-2997219-1
+nombres
+mildred
+apellidos
+aybar aracena
+fecha nacimiento
+02/08/2003
+edad
+19 anos
+ocupacion
+lugar nacimiento
+santo domingo, r.d.
+pasaporte
+estado civil
+soltero/a
+telefonos
+casa:
+trabajo: 809-594-1935
+celular:
+direcciones
+* respaldo costa rica n a alma rosa santo domingo este d m
+resumen de cuentas abiertas
+suscriptor
+cant.
+ctas
+tipo
+cta
+monto de credito
+balance actual
+atraso actual
+% utilizacion
+rd$
+us$
+rd$
+us$
+rd$
+us$
+rd$
+us$
+banreservas
+1
+tc
+5,000
+0
+0
+0
+0
+0
+0%
+0%
+sub-total (tc)
+1
+tc
+5,000
+0
+0
+0
+0
+0
+0%
+0%
+total general >>
+0
+0
+0
+0
+ 
+detalle de cuentas abiertas
+tipo cta.
+suscriptor
+status
+fecha
+actualiz
+fecha
+apertura
+fecha
+vencim
+moneda
+limite
+credito
+balance
+actual
+balance
+en mora
+pago
+minimo /
+cuota
+no.
+cuotas /
+modalidad
+vector
+comportamiento ult.
+12 meses
+<<---------
+tarjeta cr >> banreservas
+al dia
+11/2022
+08/2022
+-
+rd$
+5,000
+0
+0
+0
+-
+---  ---  --0  000
+totales generales rd$:
+0
+0
+0
+totales generales us$:
+0
+0
+0
+indagaciones ultimos 6 meses
+fecha
+suscriptor
+tipo
+16/12/2022 03:30pm
+soluciones fix y medina
+solicitud de credito
+28/11/2022 04:00am
+banreservas
+revision de portafolio
+26/10/2022 10:19pm
+banreservas
+revision de portafolio
+28/09/2022 02:50pm
+banreservas
+revision de portafolio
+29/07/2022 05:16pm
+banreservas
+revision de portafolio
+28/06/2022 09:45am
+banreservas
+revision de portafolio
+final de reporte transunion 16/12/2022
+esta informacion se suministra como una herramienta de evaluacion de riesgos, con el proposito de asistir en la toma de decision en el otorgamiento de credito y otras decisiones
+de negocios. este reporte esta fundamentado en informacion otorgada de buena fe por parte de otorgantes de credito, y otras fuentes, en la forma y terminos que se reciben de
+estos. el uso abusivo de esta informacion, divulgacion, acceso no autorizado, fuera de los fines establecidos por la ley no.172-13, sera sancionado en virtud de lo dispuesto en
+sus articulos 86-88. si la informacion desplegada en el presente reporte no responde a la situacion real del titular, este podra presentar su reclamacion ante el departamento de
+servicio al consumidor de transunion, de conformidad con el procedimiento establecido en los articulos 25 y siguiente de la ley no. 172-13. los usuarios o suscriptores, en virtud
+de dicha ley, no podran compartir, mostrar, o divulgar oralmente, o por escrito, ni mediante algun medio de transmision electronica, el contenido de los reportes a otras
+personas, que no sean empleados autorizados del suscriptor, siempre y cuando lo haga en el ejercicio de sus funciones oficiales o contractuales y para los fines previstos por la
+ley. transunion, sus empleados, funcionarios y accionistas, no seran responsables por la violacion del suscriptor, sus usuarios, o sus empleados, a las disposiciones contenidas
+en la ley no. 172-13, de proteccion de datos de caracter personal y que regula las sociedades de informacion crediticia.

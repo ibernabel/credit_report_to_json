@@ -1,0 +1,242 @@
+factores que impactan la puntuacion
+* cantidad de cuentas activas "al dia" con 12 meses o mas de antiguedad y actualizadas en los ultimos 24 meses
+(excluye sector de cobranzas) 
+* porcentaje de cuentas activas en los ultimos 24 meses respecto al total de cuentas activas (excluye sector de
+cobranzas) 
+* porcentaje de utilizacion en tarjetas de credito activas actualizadas en los ultimos 12 meses 
+rnc 101-65988-2
+ave. abraham lincoln 1019,
+ensanche piantini
+santo domingo, r. d.
+tel. 809-227-1888
+tel. 1-809-200-2930
+fax 809-549-7227
+www.transunion.com.do
+suscriptor: soluciones fix y medina srl
+usuario:
+julissa castro
+fecha:
+18/04/2023
+hora:
+12:15 pm
+transunion credit vision score
+datos personales
+cedula #402-2474966-9
+nombres
+fresa matilde
+apellidos
+molina sanchez
+fecha nacimiento 29/07/1996
+edad
+26 anos
+ocupacion
+lugar nacimiento montecristi, r.d.
+pasaporte
+estado civil
+soltero/a
+telefonos
+casa:
+trabajo: 809-541-4800
+celular: 829-355-6165
+direcciones
+* no disponible piso loscartonesosanpabloii los mina norte santo domingo este
+* carretera de manoguayabo 250 piso mejoramientosocial
+* calle 3 12 apto los minas sur los minas sur distrito nacional/santo domingo
+ transunion creditvision score
+puntuacion
+766
+resumen de cuentas abiertas
+suscriptor
+cant.
+ctas
+tipo
+cta
+monto de credito
+balance actual
+atraso actual
+% utilizacion
+rd$
+us$
+rd$
+us$
+rd$
+us$
+rd$
+us$
+banco bhd leon
+1
+tc
+10,000
+100
+1,780
+0
+0
+0
+18%
+0%
+sub-total (tc)
+1
+tc
+10,000
+100
+1,780
+0
+0
+0
+18%
+0%
+altice
+1
+tel
+3,195
+0
+1,027
+0
+0
+0
+32%
+0%
+sub-total (tel)
+1
+tel
+3,195
+0
+1,027
+0
+0
+0
+32%
+0%
+total general >>
+2,807
+0
+0
+0
+ 
+leyenda comportamiento historico
+0  al dia
+1  30 dias
+2  60 dias
+3  90 dias
+4  120 dias
+5  150 dias
+6  180 dias
+7  181+ dias o mas
+-  historial no disponible
+detalle de cuentas abiertas
+tipo cta.
+suscriptor
+status
+fecha
+actualiz
+fecha
+apertura
+fecha
+vencim
+moneda
+limite
+credito
+balance
+actual
+balance
+en mora
+pago
+minimo /
+cuota
+no.
+cuotas /
+modalidad
+vector
+comportamiento ult.
+12 meses
+<<---------
+tarjeta cr >> banco bhd leon
+al dia
+03/2023
+09/2022
+-
+rd$
+10,000
+1,780
+0
+0
+-
+---  --0  000  000
+al dia
+03/2023
+09/2022
+-
+us$
+100
+0
+0
+0
+-
+---  --0  000  000
+telco >> altice
+al dia
+04/2023
+03/2021
+-
+rd$
+3,195
+1,027
+0
+1,065
+18
+000  000  000  000
+totales generales rd$:
+2,807
+0
+1,065
+totales generales us$:
+0
+0
+0
+detalle de cuentas cerradas / inactivas
+tipo cta / ultimo estatus / suscriptor
+fecha
+apertura
+fecha ult.
+transaccion/
+ult. balance
+moneda
+limite
+credito
+vector
+comportamiento ult. 12
+meses
+<<---------
+prestamo (consumo) >> cancelada >> banco
+bhd leon
+06/2022
+12/2022
+rd$
+20,000
+---  ---  000  00-
+indagaciones ultimos 6 meses
+fecha
+suscriptor
+tipo
+18/04/2023 12:15pm
+soluciones fix y medina
+solicitud de credito
+27/03/2023 02:49pm
+banreservas
+revision de portafolio
+10/03/2023 12:11pm
+codetel
+revision de portafolio
+30/11/2022 06:51pm
+banreservas
+revision de portafolio
+final de reporte transunion 18/04/2023
+esta informacion se suministra como una herramienta de evaluacion de riesgos, con el proposito de asistir en la toma de decision en el otorgamiento de credito y otras decisiones
+de negocios. este reporte esta fundamentado en informacion otorgada de buena fe por parte de otorgantes de credito, y otras fuentes, en la forma y terminos que se reciben de
+estos. el uso abusivo de esta informacion, divulgacion, acceso no autorizado, fuera de los fines establecidos por la ley no.172-13, sera sancionado en virtud de lo dispuesto en
+sus articulos 86-88. si la informacion desplegada en el presente reporte no responde a la situacion real del titular, este podra presentar su reclamacion ante el departamento de
+servicio al consumidor de transunion, de conformidad con el procedimiento establecido en los articulos 25 y siguiente de la ley no. 172-13. los usuarios o suscriptores, en virtud
+de dicha ley, no podran compartir, mostrar, o divulgar oralmente, o por escrito, ni mediante algun medio de transmision electronica, el contenido de los reportes a otras
+personas, que no sean empleados autorizados del suscriptor, siempre y cuando lo haga en el ejercicio de sus funciones oficiales o contractuales y para los fines previstos por la
+ley. transunion, sus empleados, funcionarios y accionistas, no seran responsables por la violacion del suscriptor, sus usuarios, o sus empleados, a las disposiciones contenidas
+en la ley no. 172-13, de proteccion de datos de caracter personal y que regula las sociedades de informacion crediticia.

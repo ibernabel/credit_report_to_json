@@ -1,0 +1,271 @@
+rnc 101-65988-2
+ave. abraham lincoln 1019,
+ensanche piantini
+santo domingo, r. d.
+tel. 809-227-1888
+tel. 1-809-200-2930
+fax 809-549-7227
+www.transunion.com.do
+suscriptor: soluciones fix y medina srl
+usuario:
+henrys medina alvarez
+fecha:
+23/09/2022
+hora:
+04:17 pm
+historia de credito de individuo
+datos personales
+cedula #013-0051940-0
+nombres
+irisaudy ferianny
+apellidos
+minyety tejeda
+fecha nacimiento 21/11/1991
+edad
+30 anos
+ocupacion
+estudiante
+lugar nacimiento san jose de ocoa, r.d.
+pasaporte
+estado civil
+soltero/a
+telefonos
+casa:
+trabajo: 809-564-2232
+celular: 829-791-9121
+direcciones
+* santo domingo santo domingo santo domingo santo domingo
+* c/ verame beltre no. 11, peralta , azua peralta d. m.. peralta
+* tetelo vargas no 71 barrio duarte apto la palma de herrera santo domingo
+oeste sd
+resumen de cuentas abiertas
+suscriptor
+cant. 
+ctas
+tipo 
+cta
+monto de credito
+balance actual
+atraso actual
+% utilizacion
+rd$
+us$
+rd$
+us$
+rd$
+us$
+rd$
+us$
+viafintech solutions srl
+1
+pr
+3,000
+0
+5,470
+0
+1,590
+0
+182%
+0%
+sub-total (pr)
+1
+pr
+3,000
+0
+5,470
+0
+1,590
+0
+182%
+0%
+codetel
+2
+tel
+0
+0
+554
+0
+0
+0
+0%
+0%
+sub-total (tel)
+2
+tel
+0
+0
+554
+0
+0
+0
+0%
+0%
+total general >>
+6,024
+0
+1,590
+0
+ 
+leyenda comportamiento historico
+0  al dia
+1  30 dias
+2  60 dias
+3  90 dias
+4  120 dias
+5  150 dias
+6  180 dias
+7  181+ dias o mas
+-  historial no disponible
+detalle de cuentas abiertas
+tipo cta. 
+suscriptor 
+status
+fecha 
+actualiz
+fecha 
+apertura
+fecha 
+vencim
+moneda
+limite 
+credito
+balance 
+actual
+balance 
+en mora
+pago 
+minimo / 
+cuota
+no. 
+cuotas / 
+modalidad
+vector 
+comportamiento ult. 
+12 meses 
+ 
+<<---------
+>> viafintech solutions srl
+mora
+08/2022
+07/2022
+08/2022
+rd$
+3,000
+5,470
+1,590
+3,000
+1
+---  ---  ---  -00
+telco >> codetel
+al dia
+09/2022
+06/2022
+-
+rd$
+0
+539
+0
+415
+-
+---  ---  ---  000
+telco >> codetel
+al dia
+09/2022
+06/2022
+-
+rd$
+0
+15
+0
+415
+-
+---  ---  ---  000
+totales generales rd$:
+6,024
+1,590
+3,830
+totales generales us$:
+0
+0
+0
+detalle de cuentas cerradas / inactivas
+tipo cta / ultimo estatus / suscriptor
+fecha 
+apertura
+fecha ult. 
+transaccion/ 
+ult. balance
+moneda
+limite 
+credito
+vector 
+comportamiento ult. 12 
+meses 
+ 
+<<---------
+tarjeta cr >> cancelada >> banco popular
+02/2020
+02/2022
+rd$
+3,000
+000  000  010  110
+prestamo (comercial) >> cancelada >> banco
+ademi
+03/2021
+05/2022
+rd$
+0
+111  120  111  230
+telco >> cancelada >> codetel
+01/2022
+01/2022
+rd$
+0
+---  ---  ---  ---
+telco >> cancelada >> codetel
+12/2021
+12/2021
+rd$
+0
+---  ---  ---  ---
+telco >> cancelada >> codetel
+07/2019
+10/2019
+rd$
+0
+---  ---  --0  010
+indagaciones ultimos 6 meses
+fecha
+suscriptor
+tipo
+23/09/2022 04:17pm
+soluciones fix y medina
+solicitud de credito
+29/08/2022 05:37pm
+banco popular
+solicitud de credito
+12/07/2022 02:09pm
+viafintech solutions srl
+validacion de identidad
+28/06/2022 10:20am
+banreservas
+revision de portafolio
+22/06/2022 01:24pm
+banco popular
+solicitud de credito
+27/04/2022 11:54am
+scotiabank
+revision de portafolio
+12/04/2022 02:37am
+banco popular
+solicitud de credito
+final de reporte transunion 23/09/2022  
+esta informacion se suministra como una herramienta de evaluacion de riesgos, con el proposito de asistir en la toma de decision en el otorgamiento de credito y otras decisiones
+de negocios. este reporte esta fundamentado en informacion otorgada de buena fe por parte de otorgantes de credito, y otras fuentes, en la forma y terminos que se reciben de
+estos. el uso abusivo de esta informacion, divulgacion, acceso no autorizado, fuera de los fines establecidos por la ley no.172-13, sera sancionado en virtud de lo dispuesto en
+sus articulos 86-88. si la informacion desplegada en el presente reporte no responde a la situacion real del titular, este podra presentar su reclamacion ante el departamento de
+servicio al consumidor de transunion, de conformidad con el procedimiento establecido en los articulos 25 y siguiente de la ley no. 172-13. los usuarios o suscriptores, en virtud
+de dicha ley, no podran compartir, mostrar, o divulgar oralmente, o por escrito, ni mediante algun medio de transmision electronica, el contenido de los reportes a otras
+personas, que no sean empleados autorizados del suscriptor, siempre y cuando lo haga en el ejercicio de sus funciones oficiales o contractuales y para los fines previstos por la
+ley. transunion, sus empleados, funcionarios y accionistas, no seran responsables por la violacion del suscriptor, sus usuarios, o sus empleados, a las disposiciones contenidas
+en la ley no. 172-13, de proteccion de datos de caracter personal y que regula las sociedades de informacion crediticia.

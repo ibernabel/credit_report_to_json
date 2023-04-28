@@ -1,0 +1,228 @@
+factores que impactan la puntuacion
+* peor categoria de atraso en prestamos en los ultimos 12 meses (excluye sector de cobranzas) 
+* porcentaje de utilizacion de cuentas activas actualizadas en los ultimos 12 meses (excluye prestamos hipotecarios) 
+* cantidad de cuentas cuyo mayor atraso es de 30 dias en los ultimos 24 meses (excluye sector de cobranzas) 
+rnc 101-65988-2
+ave. abraham lincoln 1019,
+ensanche piantini
+santo domingo, r. d.
+tel. 809-227-1888
+tel. 1-809-200-2930
+fax 809-549-7227
+www.transunion.com.do
+suscriptor: soluciones fix y medina srl
+usuario:
+henrys medina alvarez
+fecha:
+01/02/2023
+hora:
+04:31 pm
+transunion credit vision score
+datos personales
+cedula #402-2010609-6
+nombres
+aury manuel
+apellidos
+jorge cordero
+fecha nacimiento 04/01/1992
+edad
+31 anos
+ocupacion
+estudiante
+lugar nacimiento santo domingo, r.d.
+pasaporte
+estado civil
+soltero/a
+telefonos
+casa: 829-593-9276
+trabajo:
+celular: 829-841-3985
+direcciones
+* calle 23 este #51 ensanche luperon santo domingo distrito nacional
+* luis reyes acosta no.296 mejoramiento so santo domingo
+* calle san juan bautista 10 apto ciudad ganadera 30 de mayo distrito
+nacional/santo domingo
+ transunion creditvision score
+puntuacion
+646
+resumen de cuentas abiertas
+suscriptor
+cant.
+ctas
+tipo
+cta
+monto de credito
+balance actual
+atraso actual
+% utilizacion
+rd$
+us$
+rd$
+us$
+rd$
+us$
+rd$
+us$
+soluciones fix y medina
+2
+pr
+45,000
+0
+10,280
+0
+8,743
+0
+23%
+0%
+sub-total (pr)
+2
+pr
+45,000
+0
+10,280
+0
+8,743
+0
+23%
+0%
+altice
+2
+tel
+14,547
+0
+6,947
+0
+4,261
+0
+48%
+0%
+sub-total (tel)
+2
+tel
+14,547
+0
+6,947
+0
+4,261
+0
+48%
+0%
+total general >>
+17,227
+0
+13,004
+0
+ 
+detalle de cuentas abiertas
+tipo cta.
+suscriptor
+status
+fecha
+actualiz
+fecha
+apertura
+fecha
+vencim
+moneda
+limite
+credito
+balance
+actual
+balance
+en mora
+pago
+minimo /
+cuota
+no.
+cuotas /
+modalidad
+vector
+comportamiento ult.
+12 meses
+<<---------
+>> soluciones fix y medina
+mora 180+
+08/2022
+08/2020
+08/2021
+rd$
+30,500
+8,743
+8,743
+4,372
+12
+---  ---  --6  066
+>> soluciones fix y medina
+al dia
+12/2022
+08/2022
+01/2023
+rd$
+14,500
+1,537
+0
+1,885
+10
+---  ---  -00  000
+telco >> altice
+al dia
+01/2023
+12/2019
+-
+rd$
+8,061
+2,686
+0
+2,687
+18
+111  000  000  000
+telco >> altice
+mora 60
+01/2023
+01/2021
+-
+rd$
+6,486
+4,261
+4,261
+2,162
+23
+202  112  121  222
+totales generales rd$:
+17,227
+13,004
+11,106
+totales generales us$:
+0
+0
+0
+indagaciones ultimos 6 meses
+fecha
+suscriptor
+tipo
+01/02/2023 04:31pm
+soluciones fix y medina
+revision de portafolio
+28/12/2022 11:45am
+banreservas
+revision de portafolio
+21/12/2022 11:55am
+qik banco digital sa, banco
+digital
+revision de portafolio
+28/11/2022 03:49am
+banreservas
+revision de portafolio
+28/09/2022 02:40pm
+banreservas
+revision de portafolio
+final de reporte transunion 01/02/2023
+esta informacion se suministra como una herramienta de evaluacion de riesgos, con el proposito de asistir en la toma de decision en el otorgamiento de credito y otras decisiones
+de negocios. este reporte esta fundamentado en informacion otorgada de buena fe por parte de otorgantes de credito, y otras fuentes, en la forma y terminos que se reciben de
+estos. el uso abusivo de esta informacion, divulgacion, acceso no autorizado, fuera de los fines establecidos por la ley no.172-13, sera sancionado en virtud de lo dispuesto en
+sus articulos 86-88. si la informacion desplegada en el presente reporte no responde a la situacion real del titular, este podra presentar su reclamacion ante el departamento de
+servicio al consumidor de transunion, de conformidad con el procedimiento establecido en los articulos 25 y siguiente de la ley no. 172-13. los usuarios o suscriptores, en virtud
+de dicha ley, no podran compartir, mostrar, o divulgar oralmente, o por escrito, ni mediante algun medio de transmision electronica, el contenido de los reportes a otras
+personas, que no sean empleados autorizados del suscriptor, siempre y cuando lo haga en el ejercicio de sus funciones oficiales o contractuales y para los fines previstos por la
+ley. transunion, sus empleados, funcionarios y accionistas, no seran responsables por la violacion del suscriptor, sus usuarios, o sus empleados, a las disposiciones contenidas
+en la ley no. 172-13, de proteccion de datos de caracter personal y que regula las sociedades de informacion crediticia.
