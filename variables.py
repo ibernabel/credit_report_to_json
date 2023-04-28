@@ -1,5 +1,5 @@
 from reporting import aury, fresa, perla, enrique, estarlin, irisaudy, mildred, yeliset, joseph
-
+import pandas as pd
 text = aury
 #text = fresa
 #text = perla
@@ -53,12 +53,59 @@ is_credit_score_report_type = text.find("transunion credit vision score") != -1
 
 #Checking if titles of tables exits
 is_summary_of_open_accounts = text.find("resumen de cuentas abiertas") != -1
+is_details_of_open_accounts = text.find("detalle de cuentas abiertas") != -1
+is_details_of_close_accounts = text.find("detalle de cuentas cerradas") != -1
 is_legend_historical_behavior = text.find("leyenda comportamiento historico") != -1
+
 
 if is_summary_of_open_accounts:
 	summary_of_open_accounts_table_title_index = text.find("resumen de cuentas abiertas")
-	details_of_open_accounts_table_title_index = text.find("detalle de cuentas abiertas")
 
+if is_details_of_close_accounts:
+	details_of_close_accounts_table_index = text.find("detalle de cuentas cerradas")
+
+if is_details_of_open_accounts and is_details_of_close_accounts:
+	details_of_open_accounts_table_end = details_of_close_accounts_table_index -1
+
+elif is_details_of_open_accounts and not is_details_of_close_accounts:
+	details_of_open_accounts_table_end = inquiries_last_6_months_index -1
+	#print(text[details_of_open_accounts_table_end -50 : details_of_open_accounts_table_end] )
+
+#building DETAILS open accounts table
+if is_details_of_open_accounts:
+	details_of_open_accounts_table_title_index = text.find("detalle de cuentas abiertas")
+	details_of_open_accounts_text = text[details_of_open_accounts_table_title_index +28 : details_of_open_accounts_table_end]
+	details_of_open_accounts_list = details_of_open_accounts_text.split('\n')
+	first_subscriber_row_start_index = 26 #Index where the headers of de table ends
+	last_subscriber_row_end_index = details_of_open_accounts_list.index("totales generales rd$:")
+	
+	data_rows_details_account = [details_of_open_accounts_list[i:i+12] for i in range(first_subscriber_row_start_index,last_subscriber_row_end_index, 12)]
+
+
+	details_open_accounts = [
+		{
+			"account_type_and_subscriber": row[0],
+			"status": row[1],
+			"update_date": row[2],
+			"opening_date": row[3],
+			"expiration_date": row[4],
+			"currency": row[5],
+			"credit_limit": row[6],
+			"current_balance": row[7],
+			"balance_in_arrears": row[8],
+			"minimum_payment_and_installment": row[9],
+			"no_of_installments_and_modality": row[10],
+			"behavior_vector_last_12_months": row[11],
+		}
+		for row in data_rows_details_account
+	]
+	datable = pd.DataFrame(details_open_accounts)
+	##print(datable.info())
+	#print(datable.describe())
+	#print(datable.shape())
+	print(datable)
+	#print(len(details_open_accounts[0]))
+	#print(details_open_accounts[0]["account_type_and_subscriber"])
 
 if is_credit_score_report_type:
 	credit_score_report_type_index = text.find("transunion credit vision score") 
@@ -89,6 +136,34 @@ if is_credit_score_report_type and is_summary_of_open_accounts:
 	
 elif is_credit_score_report_type and not is_summary_of_open_accounts: 
 	scoring = text[puntuacion_index + 11 : inquiries_last_6_months_index -1]
+
+#building summary open accounts table
+if is_summary_of_open_accounts:
+	summary_of_open_accounts_list = summary_of_open_accounts_text.split('\n')
+	first_subscriber_row_start_index = 17 #Index where the headers of de table ends
+	last_subscriber_row_end_index = summary_of_open_accounts_list.index("total general >>")
+
+	data_rows_summary_account = [summary_of_open_accounts_list[i:i+11] for i in range(first_subscriber_row_start_index,last_subscriber_row_end_index, 11)]
+
+	summary_open_accounts = [
+		{
+			"subscriber": row[0],
+			"accounts_amount": row[1],
+			"account_type": row[2],
+			"credit_amount_dop": row[3],
+			"credit_amount_usd": row[4],
+			"current_balance_dop": row[5],
+			"current_balance_usd": row[6],
+			"current_overdue_dop": row[7],
+			"current_overdue_usd": row[8],
+			"utilization_percent_dop": row[9],
+			"utilization_percent_usd": row[10],
+		}
+		for row in data_rows_summary_account
+	]
+
+#building DETAILS open accounts table
+
 
 
 #VARIABLES:
@@ -135,72 +210,5 @@ if is_credit_score_report_type:
 	score.update({"scoring": scoring, "factors": factors})
 	#print(score)
 
-#building summary open accounts table
-summary_open_accounts = [] # Table. A list of dicctionaries that represent a each row of data in the original table
-summary_of_open_accounts_list = summary_of_open_accounts_text.split('\n')
-first_subscriber_row_start_index = 17 #Index where the headers of de table ends
-last_subscriber_row_end_index = summary_of_open_accounts_list.index("total general >>")
-suscriber_rows_count = ( last_subscriber_row_end_index - first_subscriber_row_start_index ) / 11 # Eache group of data in a row has 11 '\n'
-
-summary_open_accounts_headers =  ["subscriber", "accounts_amount", "account_type", "credit_amount_dop", "credit_amount_usd", "current_balance_dop", "current_balance_usd","current_overdue_dop", "current_overdue_usd","utilization_percent_dop", "utilization_percent_usd"]
-
-def create_summary_open_accounts_table():
-
-	for i in range(first_subscriber_row_start_index, last_subscriber_row_end_index, 11 ):
-		summary_open_accounts_rows = {}	
-
-		for j in range(i, i + 11, 1):
-			summary_open_accounts_rows.update({summary_open_accounts_headers[j - i] : summary_of_open_accounts_list[j]})
-		
-		summary_open_accounts.append(summary_open_accounts_rows)
-
-create_summary_open_accounts_table()
-
-print(len(summary_open_accounts))
-print(f'summary_open_accounts = {summary_open_accounts}')
-
-#print(summary_open_accounts[0]["subscriber"])
-#print(summary_open_accounts[1]["subscriber"])
-#print(summary_open_accounts[2]["subscriber"])
-#print(summary_open_accounts[3]["subscriber"])
-
-#{"subscriber": "", "accounts_amount": "", "account_type": "", "credit_amount_dop": "", "credit_amount_usd": "", "current_balance_dop": "", "current_balance_usd": "","current_overdue_dop": "", "current_overdue_usd": "","utilization_percent_dop": "", "utilization_percent_usd": ""}
-
-#subscriber
-#accounts_amount
-#account_type
-#credit_amount_dop
-#credit_amount_usd
-#current_balance_dop
-#current_balance_usd
-#current_overdue_dop
-#current_overdue_usd
-#utilization_percent_dop
-#utilization_percent_usd
 
 #deploy:
-#print(names)
-#print(summary_of_open_accounts_end)
-#print(inquirer)
-#print(personal_data)
-
-#print(personal_data["direcciones"][0].title())
-#print(summary_of_open_accounts_list[60])
-#print(summary_of_open_accounts_list.index("banreservas"))
-
-#print(first_subscriber_row_start_index)
-#print(last_subscriber_row_end_index)
-#print(suscriber_rows_count)
-
-#print(len(summary_of_open_accounts_list))
-
-#print(text.count("puntuacion"))
-
-#for index, address in enumerate(addresses):
-    #print(f'{index + 1}: {address.title()}')
-
-#table = [
-#    {"name": "John", "age": 30, "city": "New York"},
-#    {"name": "Jane", "age": 25, "city": "Los Angeles"},
-#    {"name": "Bob", "age": 40, "city": "San Francisco"}
-#]
