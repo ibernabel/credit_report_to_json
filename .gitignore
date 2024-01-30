@@ -178,6 +178,10 @@ pyrightconfig.json
 
 #Custom
 credit_reports/
+images/
+output_text/
 reporting.py
 find_text.py
 datos_personales.py
+.png
+.jpeg

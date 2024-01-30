@@ -4,7 +4,11 @@ import os
 from PIL import Image
 
 #Define path to PDF file
-file_path = 'aury.pdf'
+#file_path = 'aury.pdf'
+input_name = input('Enter the file name (without: ".pdf"):')
+file_name = f'{input_name}'
+
+file_path = f'./credit_reports/{file_name}.pdf'
 
 #Define path for saved images
 images_path = 'images/'
@@ -43,7 +47,10 @@ for i, img in enumerate(images_list, start=1):
     with open(os.path.join(images_path, image_name) , 'wb') as image_file:
         image_file.write(image_bytes)
         image_file.close()
+        
+print(f"Images from file: {file_name}.pdf, was saved successful into './images/' folder.")
 
+#image-from-pdf.py
 #Author: Misha Sv
 #AuthorURL: https://pyshark.medium.com/
 #AuthorURL2: https://www.linkedin.com/in/mikhail-sidyakov
