@@ -1,4 +1,4 @@
-#import pandas as pd
+import pandas as pd
 
 #with open("./output_text/idequel.txt", "r") as file:
 #    content = file.read()
@@ -7,6 +7,12 @@ file = open("./output_text/idequel.txt", "r")
 text = file.read()
 
 rnc_index = text.find("rnc")
+
+#Defautl variables
+score = "No score"
+scoring = "No score"
+summary_of_open_accounts_text = "No summary"
+summary_of_open_accounts_end = "No summary"
 
 #inquirer data indexes
 subscriber_index = text.find("suscriptor:")
@@ -118,13 +124,6 @@ personal_data.update({"cedula": identification, "nombres": names, "apellidos": l
 has_transunion_creditvision_score_table = True
 transunion_creditvision_score_table_index = text.find("transunion creditvision score")
 
-
-#Defautl variables
-#score = "No score"
-#scoring = "No score"
-#summary_of_open_accounts_text = "No summary"
-#summary_of_open_accounts_end = "No summary"
-
 if has_transunion_creditvision_score_table:
   puntuacion_index = text.rfind("puntuacion")
   score = text[puntuacion_index +10 : puntuacion_index + 14] 
@@ -132,7 +131,207 @@ if has_transunion_creditvision_score_table:
   factors = text[factors_index + 36 : rnc_index - 1]
   factors = factors.replace('* ', '').replace(') ', ')').split('\n')
 
+#building summary open accounts table
 
+if has_resumen_de_cuentas_abiertas_table:
+  if has_leyenda_comportamiento_historico_title:
+    resumen_de_cuentas_abiertas_table_index_end = leyenda_comportamiento_historico_index - 1
+  else:
+    resumen_de_cuentas_abiertas_table_index_end = detalle_de_cuentas_abiertas_table_index - 1
+  
+  #Get the slice of text about open account summary
+  resumen_de_cuentas_abiertas_table_text = text[resumen_de_cuentas_abiertas_table_index + 28 : resumen_de_cuentas_abiertas_table_index_end]
+  #Making a list of each data split it of \n
+  summary_of_open_accounts_list = resumen_de_cuentas_abiertas_table_text.split('\n')
+  #Index where the each headers of de table ends(From Suscriber to % Utilitation):
+  first_subscriber_row_start_index = 17 
+  last_subscriber_row_end_index = summary_of_open_accounts_list.index("total general >>")
+  #Split the data according to a table columns(11) from text list. Each 11 items is a row data
+  data_rows_summary_account = [summary_of_open_accounts_list[i:i+11] for i in range(first_subscriber_row_start_index,last_subscriber_row_end_index, 11)]
+  #print(len(data_rows_summary_account))
+  #for row in data_rows_summary_account:
+  #  print(row)
+
+  #Making a dictionary from the rows data. Assigning each row to a dicctionary keys
+  summary_open_accounts = [
+		{
+			"subscriber": row[0],
+			"accounts_amount": row[1],
+			"account_type": row[2],
+			"credit_amount_dop": row[3],
+			"credit_amount_usd": row[4],
+			"current_balance_dop": row[5],
+			"current_balance_usd": row[6],
+			"current_overdue_dop": row[7],
+			"current_overdue_usd": row[8],
+			"utilization_percent_dop": row[9],
+			"utilization_percent_usd": row[10],
+		}
+		for row in data_rows_summary_account
+	]
+
+  #datable = pd.DataFrame(summary_open_accounts)
+  ##print(datable.info())
+  ##print(datable.describe())
+  #print(datable)
+
+def process_table_details(sublista_actual):
+  suscriptor = [sublista_actual[0]]
+  #Separar la informacion del tipo de cuenta y el suscriptor por los caracteres ">>"
+  suscriptor = suscriptor[0].split(">>")
+
+  #Eliminar los espacios en blanco que tengan al principio y al fimal
+  for i in range (len (suscriptor)):
+    suscriptor[i] = suscriptor[i].strip()
+  # Crear las subsecuentes sublistas
+  sublistas_resto = [sublista_actual[i:i+11] for i in range(1, len(sublista_actual), 11)]
+
+  #Agregar el suscriptor a cada sublista
+  sublista_con_suscriptor_agregado = []
+
+  for element in sublistas_resto:
+    element = suscriptor + element
+    sublista_con_suscriptor_agregado.append(element)
+
+  for element in sublista_con_suscriptor_agregado:
+    details_of_open_accounts_list_suscribers_rows.append(element)
+    sublista_actual = []
+
+
+#building DETAILS open accounts table 
+if has_detalle_de_cuentas_abiertas_table:
+  if has_detalle_de_cuentas_cerradas_inactivas_table:
+    detalle_de_cuentas_abiertas_table_index_end = detalle_de_cuentas_cerradas_inactivas_table_index - 1
+  else:
+     detalle_de_cuentas_abiertas_table_index_end = indagaciones_ultimos_6_meses_table_index - 1
+  
+  #Get the slice of text about open account detils
+  detalle_de_cuentas_abiertas_table_text = text[detalle_de_cuentas_abiertas_table_index + 28 : detalle_de_cuentas_abiertas_table_index_end]
+  #Making a list of each data split it of \n
+  details_of_open_accounts_list = detalle_de_cuentas_abiertas_table_text.split('\n')
+  first_subscriber_row_start_index = 26 #Index where the each headers of de table ends
+  last_subscriber_row_end_index = details_of_open_accounts_list.index("totales generales rd$:")
+  details_of_open_accounts_list_data_rows = details_of_open_accounts_list[26:last_subscriber_row_end_index]
+  #print(details_of_open_accounts_list_data_rows)
+  ##Tratando de dividir la informacion de cada suscriptor.
+  ##Si en cuentra el valor ">>" divide la lista
+  details_of_open_accounts_list_suscribers_rows = []
+  sublista_actual = []  # Inicializar una sublista vacía
+
+  ## Iterar a través de la lista original
+  for elemento in details_of_open_accounts_list_data_rows:
+    #print(elemento)
+    #print(sublista_actual)
+
+    if ">>" in elemento:
+      #print(elemento)
+      #print(sublista_actual)
+
+      # Si encontramos ">>", guardamos la sublista actual y creamos una nueva
+      if sublista_actual:
+        #print(len(sublista_actual))
+        #print(sublista_actual)
+        #Recuperar el primer elemento de la lista
+        suscriptor = [sublista_actual[0]]
+        #Separar la informacion del tipo de cuenta y el suscriptor por los caracteres ">>"
+        suscriptor = suscriptor[0].split(">>")
+
+        #Eliminar los espacios en blanco que tengan al principio y al fimal
+        for i in range (len (suscriptor)):
+          suscriptor[i] = suscriptor[i].strip()
+        # Crear las subsecuentes sublistas
+        sublistas_resto = [sublista_actual[i:i+11] for i in range(1, len(sublista_actual), 11)]
+        #print(sublistas_resto)
+
+        #Agregar el suscriptor a cada sublista
+        sublista_con_suscriptor_agregado = []
+
+        for element in sublistas_resto:
+          element = suscriptor + element
+          sublista_con_suscriptor_agregado.append(element)
+        #print(len(sublista_con_suscriptor_agregado))
+        #print(sublista_con_suscriptor_agregado)
+
+        for element in sublista_con_suscriptor_agregado:
+          details_of_open_accounts_list_suscribers_rows.append(element)
+
+        sublista_actual = []
+        #print(sublista_actual)
+    ### NO TOCAR PROXIMA LINEA
+    sublista_actual.append(elemento)  # Agregar elementos a la sublista actual
+  #print(sublista_actual)
+  # Agregar la última sublista a la lista final
+  if sublista_actual:
+    process_table_details(sublista_actual)
+  
+  print(len(details_of_open_accounts_list_suscribers_rows))
+  print(details_of_open_accounts_list_suscribers_rows)
+    #print(len(sublista_actual))
+    #print(sublista_actual)
+
+
+  #Para cada sub-lista de datos de los Suscriptores, quitar el primer elemento y...
+  #for elemento in details_of_open_accounts_list_suscribers_rows:
+
+# Iterar a través de la lista original
+  #for elemento in details_of_open_accounts_list_data_rows:
+  #  if ">>" in elemento:
+  #      valores_resultantes = elemento.split(">>")
+  #      nueva_lista.extend(valores_resultantes)  # Extender la nueva lista con los valores resultantes
+  #  else:
+  #      nueva_lista.append(elemento)  # Agregar elementos no afectados directamente
+
+  #print(len(nueva_lista))
+  #print(nueva_lista)
+
+  #print(details_of_open_accounts_list_data_rows)      
+
+  #print(len(details_of_open_accounts_list_data_rows))
+  #print(details_of_open_accounts_list_data_rows[0].split(">> "))
+  #print(details_of_open_accounts_list_data_rows[23].split(">> "))
+
+  #How to split the 12 month behavior vector. 
+  #print([details_of_open_accounts_list_data_rows[11].replace(" ","")])
+  #lista_original = [details_of_open_accounts_list_data_rows[11].replace(" ","")]
+  #lista_digitos = [int(digito) for digito in lista_original[0]]
+  #print(lista_digitos)
+
+ 	###
+  #Split the data according to a table columns(12) from text list. Each 11 items is a row data
+  #data_rows_details_account = [details_of_open_accounts_list[i:i+12] for i in range(first_subscriber_row_start_index,last_subscriber_row_end_index, 12)]
+
+  ##for row in data_rows_details_account:
+  ##  print(len(row))
+
+  ##print(len(data_rows_details_account))
+  ##print(data_rows_details_account)
+
+  #details_open_accounts = [
+	#	{
+	#		"account_type_and_subscriber": row[0],
+	#		"status": row[1],
+	#		"update_date": row[2],
+	#		"opening_date": row[3],
+	#		"expiration_date": row[4],
+	#		"currency": row[5],
+	#		"credit_limit": row[6],
+	#		"current_balance": row[7],
+	#		"balance_in_arrears": row[8],
+	#		"minimum_payment_and_installment": row[9],
+	#		"no_of_installments_and_modality": row[10],
+	#		"behavior_vector_last_12_months": row[11],
+	#	}
+	#	for row in data_rows_details_account
+	#]
+
+  #print(len(details_open_accounts))
+  #print(details_open_accounts[2])
+  #print(data_rows_details_account)
+  #datable = pd.DataFrame(details_open_accounts)
+	###print(datable.info())
+	##print(datable.describe())
+	##print(datable.shape())
+  #print(datable)
 
 #BUILDING INDEXES AND VARIABLES
 #INDEXES
