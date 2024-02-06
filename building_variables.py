@@ -3,7 +3,9 @@ import pandas as pd
 #with open("./output_text/idequel.txt", "r") as file:
 #    content = file.read()
 
-file = open("./output_text/Idequel Bernabel Alvarez.txt", "r")
+#file = open("./output_text/idequel.txt", "r")
+#file = open("./output_text/OLIVER JESUS BATISTA RUIZ.txt", "r")
+file = open("./output_text/DIOMARI DOMINICO MOSATE.txt", "r")
 text = file.read()
 
 rnc_index = text.find("rnc")
@@ -188,14 +190,15 @@ if has_detalle_de_cuentas_abiertas_table:
   details_of_open_accounts_list = detalle_de_cuentas_abiertas_table_text.split('\n')
   first_subscriber_row_start_index = 26 #Index where the each headers of de table ends
   last_subscriber_row_end_index = details_of_open_accounts_list.index("totales generales rd$:")
-  details_of_open_accounts_list_data_rows = details_of_open_accounts_list[26:last_subscriber_row_end_index]
+  details_of_open_accounts_list_data_rows = details_of_open_accounts_list[first_subscriber_row_start_index:last_subscriber_row_end_index]
+  #print(details_of_open_accounts_list)
 
   # Processing the table rows
   details_of_open_accounts_list_suscribers_rows = []
   sublista_actual = []  # Inicializar una sublista vacía
 
   #Function processe data into details open account
-  def process_table_details(sublista_actual):
+  def process_table_details_account(sublista_actual):
     suscriptor = [sublista_actual[0]]
     #Separar la informacion del tipo de cuenta y el suscriptor por los caracteres ">>"
     suscriptor = suscriptor[0].split(">>")
@@ -223,7 +226,7 @@ if has_detalle_de_cuentas_abiertas_table:
     if ">>" in elemento:
       # Si encontramos ">>", guardamos la sublista actual y creamos una nueva
       if sublista_actual:
-        process_table_details(sublista_actual)
+        process_table_details_account(sublista_actual)
         sublista_actual = []
 
     ### NO TOCAR PROXIMA LINEA
@@ -231,7 +234,7 @@ if has_detalle_de_cuentas_abiertas_table:
 
   # Agregar la última sublista a la lista final
   if sublista_actual:
-    process_table_details(sublista_actual)
+    process_table_details_account(sublista_actual)
     sublista_actual = [] 
 
   #Turn the 12 month behavior vector in a list
@@ -265,19 +268,79 @@ if has_detalle_de_cuentas_abiertas_table:
 		for row in details_of_open_accounts_list_suscribers_rows
 	]
 
-  #for i in details_open_accounts:
-  #  for clave, valor in details_open_accounts[1].items():
-  #    print(f"{clave}: {valor}")
-
-  #print(len(details_open_accounts))
-  #print(details_open_accounts)
-  #print(details_open_accounts[2])
-  #print(data_rows_details_account)
-  datable = pd.DataFrame(details_open_accounts)
+  #datable = pd.DataFrame(details_open_accounts)
 	###print(datable.info())
 	##print(datable.describe())
 	#print(datable.shape)
-  print(datable)
+  #print(datable)
 
-#BUILDING INDEXES AND VARIABLES
-#INDEXES
+#building detalle_de_cuentas_cerradas_inactivas_table:
+if has_detalle_de_cuentas_cerradas_inactivas_table:
+  detalle_de_cuentas_cerradas_inactivas_table_index
+  detalle_de_cuentas_cerradas_inactivas_table_index_end = indagaciones_ultimos_6_meses_table_index - 1
+
+  #Get the slice of text about detalle_de_cuentas_cerradas_inactivas_table
+  detalle_de_cuentas_cerradas_inactivas_table_text = text[detalle_de_cuentas_cerradas_inactivas_table_index + 39 : detalle_de_cuentas_cerradas_inactivas_table_index_end]
+  #Making a list of each data split it of \n
+  details_of_open_close_accounts_list = detalle_de_cuentas_cerradas_inactivas_table_text.split('\n')
+  #print(details_of_open_close_accounts_list[13])
+
+  #Index where the each headers of de table ends
+  first_subscriber_row_start_index = details_of_open_close_accounts_list.index("<<---------") + 1 
+  last_subscriber_row_end_index = -1
+  #print(first_subscriber_row_start_index)
+  #print(last_subscriber_row_end_index)
+  details_of_open_accounts_list_data_rows = details_of_open_close_accounts_list[first_subscriber_row_start_index:]
+  print(details_of_open_accounts_list_data_rows)
+
+
+  #  # Processing the table rows
+  #details_of_open_accounts_list_suscribers_rows = []
+  #sublista_actual = []  # Inicializar una sublista vacía
+
+  ##Function processe data into details open account
+  #def process_table_details_open_close_account(sublista_actual):
+  #  suscriptor = [sublista_actual[0]]
+  #  #Separar la informacion del tipo de cuenta y el suscriptor por los caracteres ">>"
+  #  suscriptor = suscriptor[0].split(">>")
+
+  #  #Eliminar los espacios en blanco que tengan al principio y al fimal
+  #  for i in range (len (suscriptor)):
+  #    suscriptor[i] = suscriptor[i].strip()
+  #  # Crear las subsecuentes sublistas
+  #  sublistas_resto = [sublista_actual[i:i+11] for i in range(1, len(sublista_actual), 11)]
+
+  #  #Agregar el suscriptor a cada sublista
+  #  sublista_con_suscriptor_agregado = []
+
+  #  for element in sublistas_resto:
+  #    element = suscriptor + element
+  #    sublista_con_suscriptor_agregado.append(element)
+
+  #  for element in sublista_con_suscriptor_agregado:
+  #    details_of_open_accounts_list_suscribers_rows.append(element)
+  ##End of function
+    
+  ### Iterar a través de la lista original
+  #for elemento in details_of_open_accounts_list_data_rows:
+
+  #  if ">>" in elemento:
+  #    # Si encontramos ">>", guardamos la sublista actual y creamos una nueva
+  #    if sublista_actual:
+  #      process_table_details_open_close_account(sublista_actual)
+  #      sublista_actual = []
+
+  #  ### NO TOCAR PROXIMA LINEA
+  #  sublista_actual.append(elemento)  # Agregar elementos a la sublista actual
+
+  ## Agregar la última sublista a la lista final
+  #if sublista_actual:
+  #  process_table_details_open_close_account(sublista_actual)
+  #  sublista_actual = [] 
+
+  ##Turn the 12 month behavior vector in a list
+  #for element in details_of_open_accounts_list_suscribers_rows:
+  #  caracteres = element[12].replace(" ","")
+  #  lista_resultante = [int(caracter) if caracter.isdigit() else None for caracter in caracteres]
+
+  #  element[12] = lista_resultante

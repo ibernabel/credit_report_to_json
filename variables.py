@@ -1,6 +1,6 @@
-from reporting import aury, fresa, perla, enrique, estarlin, irisaudy, mildred, yeliset, joseph
+#from reporting import aury, fresa, perla, enrique, estarlin, irisaudy, mildred, yeliset, joseph
 import pandas as pd
-text = aury
+text = "aury"
 #text = fresa
 #text = perla
 #text = enrique
