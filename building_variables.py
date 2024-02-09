@@ -1,11 +1,11 @@
 import pandas as pd
-
+#import re
 #with open("./output_text/idequel.txt", "r") as file:
 #    content = file.read()
 
 #file = open("./output_text/idequel.txt", "r")
 #file = open("./output_text/OLIVER JESUS BATISTA RUIZ.txt", "r")
-file = open("./output_text/DIOMARI DOMINICO MOSATE.txt", "r")
+file = open("./output_text/NATHALIE FLORIAN BELLO.txt", "r")
 text = file.read()
 
 rnc_index = text.find("rnc")
@@ -171,11 +171,12 @@ if has_resumen_de_cuentas_abiertas_table:
 		}
 		for row in data_rows_summary_account
 	]
+  #print(summary_open_accounts)
 
-  #datable = pd.DataFrame(summary_open_accounts)
+  datable = pd.DataFrame(summary_open_accounts)
   ##print(datable.info())
   ##print(datable.describe())
-  #print(datable)
+  print(datable)
 
 #building DETAILS open accounts table 
 if has_detalle_de_cuentas_abiertas_table:
@@ -267,12 +268,12 @@ if has_detalle_de_cuentas_abiertas_table:
 		}
 		for row in details_of_open_accounts_list_suscribers_rows
 	]
-
-  #datable = pd.DataFrame(details_open_accounts)
+  #print(details_open_accounts)
+  datable = pd.DataFrame(details_open_accounts)
 	###print(datable.info())
 	##print(datable.describe())
 	#print(datable.shape)
-  #print(datable)
+  print(datable)
 
 #building detalle_de_cuentas_cerradas_inactivas_table:
 if has_detalle_de_cuentas_cerradas_inactivas_table:
@@ -291,7 +292,7 @@ if has_detalle_de_cuentas_cerradas_inactivas_table:
   #print(first_subscriber_row_start_index)
   #print(last_subscriber_row_end_index)
   details_of_open_accounts_list_data_rows = details_of_open_close_accounts_list[first_subscriber_row_start_index:]
-  print(details_of_open_accounts_list_data_rows)
+  #print(details_of_open_accounts_list_data_rows)
 
 
   #  # Processing the table rows
