@@ -5,7 +5,8 @@ import pandas as pd
 
 #file = open("./output_text/idequel.txt", "r")
 #file = open("./output_text/OLIVER JESUS BATISTA RUIZ.txt", "r")
-file = open("./output_text/NATHALIE FLORIAN BELLO.txt", "r")
+#file = open("./output_text/NATHALIE FLORIAN BELLO.txt", "r")
+file = open("./output_text/DIOMARI DOMINICO MOSATE.txt", "r")
 text = file.read()
 
 rnc_index = text.find("rnc")
@@ -173,10 +174,10 @@ if has_resumen_de_cuentas_abiertas_table:
 	]
   #print(summary_open_accounts)
 
-  datable = pd.DataFrame(summary_open_accounts)
+  #datable = pd.DataFrame(summary_open_accounts)
   ##print(datable.info())
   ##print(datable.describe())
-  print(datable)
+  #print(datable)
 
 #building DETAILS open accounts table 
 if has_detalle_de_cuentas_abiertas_table:
@@ -191,14 +192,19 @@ if has_detalle_de_cuentas_abiertas_table:
   details_of_open_accounts_list = detalle_de_cuentas_abiertas_table_text.split('\n')
   first_subscriber_row_start_index = 26 #Index where the each headers of de table ends
   last_subscriber_row_end_index = details_of_open_accounts_list.index("totales generales rd$:")
+  # Selecting only the elments with information details not the headers
   details_of_open_accounts_list_data_rows = details_of_open_accounts_list[first_subscriber_row_start_index:last_subscriber_row_end_index]
   #print(details_of_open_accounts_list)
+  #print(details_of_open_accounts_list_data_rows)
 
-  # Processing the table rows
+  # Processing the table rows for divide the information based in each suscriber data
   details_of_open_accounts_list_suscribers_rows = []
   sublista_actual = []  # Inicializar una sublista vacía
 
   #Function processe data into details open account
+  #Split each suscriber data by ">>" character
+  # Separate the data in the suscriber element of account type and suscriber name
+  # Add each row modifyed to the final datatable
   def process_table_details_account(sublista_actual):
     suscriptor = [sublista_actual[0]]
     #Separar la informacion del tipo de cuenta y el suscriptor por los caracteres ">>"
@@ -210,13 +216,14 @@ if has_detalle_de_cuentas_abiertas_table:
     # Crear las subsecuentes sublistas
     sublistas_resto = [sublista_actual[i:i+11] for i in range(1, len(sublista_actual), 11)]
 
-    #Agregar el suscriptor a cada sublista
+    #Agregar el suscriptor a cada sublista (The data for each suscriber individualy)
     sublista_con_suscriptor_agregado = []
 
     for element in sublistas_resto:
       element = suscriptor + element
       sublista_con_suscriptor_agregado.append(element)
 
+    # Creating the final datatable with each row proccesed (suscriber and account type added)
     for element in sublista_con_suscriptor_agregado:
       details_of_open_accounts_list_suscribers_rows.append(element)
   #End of function
@@ -269,11 +276,11 @@ if has_detalle_de_cuentas_abiertas_table:
 		for row in details_of_open_accounts_list_suscribers_rows
 	]
   #print(details_open_accounts)
-  datable = pd.DataFrame(details_open_accounts)
+  #datable = pd.DataFrame(details_open_accounts)
 	###print(datable.info())
 	##print(datable.describe())
 	#print(datable.shape)
-  print(datable)
+  #print(datable)
 
 #building detalle_de_cuentas_cerradas_inactivas_table:
 if has_detalle_de_cuentas_cerradas_inactivas_table:
@@ -291,57 +298,93 @@ if has_detalle_de_cuentas_cerradas_inactivas_table:
   last_subscriber_row_end_index = -1
   #print(first_subscriber_row_start_index)
   #print(last_subscriber_row_end_index)
-  details_of_open_accounts_list_data_rows = details_of_open_close_accounts_list[first_subscriber_row_start_index:]
-  #print(details_of_open_accounts_list_data_rows)
+  details_of_close_accounts_list_data_rows = details_of_open_close_accounts_list[first_subscriber_row_start_index:]
+  #print(details_of_close_accounts_list_data_rows)
 
 
-  #  # Processing the table rows
-  #details_of_open_accounts_list_suscribers_rows = []
-  #sublista_actual = []  # Inicializar una sublista vacía
+####
+  
+  # Processing the table rows for divide the information based in each suscriber data
+  details_of_close_accounts_list_suscribers_rows = []
+  sublista_actual = []  # Inicializar una sublista vacía
 
-  ##Function processe data into details open account
-  #def process_table_details_open_close_account(sublista_actual):
-  #  suscriptor = [sublista_actual[0]]
-  #  #Separar la informacion del tipo de cuenta y el suscriptor por los caracteres ">>"
-  #  suscriptor = suscriptor[0].split(">>")
+  #Function processe data into details open account
+  #Split each suscriber data by ">>" character
+  # Separate the data in the suscriber element of account type and suscriber name
+  # Add each row modifyed to the final datatable
+  def process_table_details_account(sublista_actual):
+    suscriptor = [sublista_actual[0]]
+    #Separar la informacion del tipo de cuenta y el suscriptor por los caracteres ">>"
+    suscriptor = suscriptor[0].split(">>")
 
-  #  #Eliminar los espacios en blanco que tengan al principio y al fimal
-  #  for i in range (len (suscriptor)):
-  #    suscriptor[i] = suscriptor[i].strip()
-  #  # Crear las subsecuentes sublistas
-  #  sublistas_resto = [sublista_actual[i:i+11] for i in range(1, len(sublista_actual), 11)]
+    #Eliminar los espacios en blanco que tengan al principio y al fimal
+    for i in range (len (suscriptor)):
+      suscriptor[i] = suscriptor[i].strip()
+    # Crear las subsecuentes sublistas
+    sublistas_resto = [sublista_actual[i:i+11] for i in range(1, len(sublista_actual), 11)]
 
-  #  #Agregar el suscriptor a cada sublista
-  #  sublista_con_suscriptor_agregado = []
+    #Agregar el suscriptor a cada sublista (The data for each suscriber individualy)
+    sublista_con_suscriptor_agregado = []
 
-  #  for element in sublistas_resto:
-  #    element = suscriptor + element
-  #    sublista_con_suscriptor_agregado.append(element)
+    for element in sublistas_resto:
+      element = suscriptor + element
+      sublista_con_suscriptor_agregado.append(element)
 
-  #  for element in sublista_con_suscriptor_agregado:
-  #    details_of_open_accounts_list_suscribers_rows.append(element)
-  ##End of function
+    # Creating the final datatable with each row proccesed (suscriber and account type added)
+    for element in sublista_con_suscriptor_agregado:
+      details_of_close_accounts_list_suscribers_rows.append(element)
+  #End of function
     
-  ### Iterar a través de la lista original
-  #for elemento in details_of_open_accounts_list_data_rows:
+  ## Iterar a través de la lista original
+  for elemento in details_of_close_accounts_list_data_rows:
 
-  #  if ">>" in elemento:
-  #    # Si encontramos ">>", guardamos la sublista actual y creamos una nueva
-  #    if sublista_actual:
-  #      process_table_details_open_close_account(sublista_actual)
-  #      sublista_actual = []
+    if ">>" in elemento:
+      # Si encontramos ">>", guardamos la sublista actual y creamos una nueva
+      if sublista_actual:
+        process_table_details_account(sublista_actual)
+        sublista_actual = []
 
-  #  ### NO TOCAR PROXIMA LINEA
-  #  sublista_actual.append(elemento)  # Agregar elementos a la sublista actual
+    ### NO TOCAR PROXIMA LINEA
+    sublista_actual.append(elemento)  # Agregar elementos a la sublista actual
 
-  ## Agregar la última sublista a la lista final
-  #if sublista_actual:
-  #  process_table_details_open_close_account(sublista_actual)
-  #  sublista_actual = [] 
+  # Agregar la última sublista a la lista final
+  if sublista_actual:
+    process_table_details_account(sublista_actual)
+    sublista_actual = [] 
 
-  ##Turn the 12 month behavior vector in a list
-  #for element in details_of_open_accounts_list_suscribers_rows:
+  #Turn the 12 month behavior vector in a list
+  #for element in details_of_close_accounts_list_suscribers_rows:
   #  caracteres = element[12].replace(" ","")
   #  lista_resultante = [int(caracter) if caracter.isdigit() else None for caracter in caracteres]
 
   #  element[12] = lista_resultante
+
+  print(len(details_of_close_accounts_list_suscribers_rows))
+  for row in details_of_close_accounts_list_suscribers_rows:
+    print(len(row))
+    print(row)
+
+  #details_close_accounts = [
+	#	{
+	#		"account_type": row[0],
+	#		"subscriber": row[1],
+	#		"status": row[2],
+	#		"update_date": row[3],
+	#		"opening_date": row[4],
+	#		"expiration_date": row[5],
+	#		"currency": row[6],
+	#		"credit_limit": row[7],
+	#		"current_balance": row[8],
+	#		"balance_in_arrears": row[9],
+	#		"minimum_payment_and_installment": row[10],
+	#		"no_of_installments_and_modality": row[11],
+	#		"behavior_vector_last_12_months": row[12],
+	#	}
+	#	for row in details_of_close_accounts_list_suscribers_rows
+	#]
+  #print(details_close_accounts)
+  #datable = pd.DataFrame(details_close_accountss)
+	###print(datable.info())
+	##print(datable.describe())
+	#print(datable.shape)
+  #print(datable)
