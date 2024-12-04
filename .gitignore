@@ -183,5 +183,7 @@ output_text/
 reporting.py
 find_text.py
 datos_personales.py
-.png
-.jpeg
+*.png
+*.jpeg
+*.json
+*.pdf
