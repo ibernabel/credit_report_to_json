@@ -10,6 +10,9 @@ A FastAPI service that converts PDF credit reports into structured JSON data. Th
 - Docker support for easy deployment
 - Automatic file cleanup after processing
 - Health check endpoint for monitoring
+- Comprehensive logging and monitoring system
+- Automated backup and maintenance
+- System metrics tracking
 
 ## Installation
 
@@ -145,7 +148,8 @@ docker run -d \
 - Implement rate limiting
 - Set up proper file access permissions
 - Regular security updates
-- Monitor system resources
+- Comprehensive system monitoring and logging
+- Automated security maintenance
 
 ### Volume Management
 
@@ -165,6 +169,46 @@ Both directories are automatically cleaned up after processing.
 | PYTHONPATH | Python path configuration | /app | Yes |
 | PYTHONUNBUFFERED | Python output buffering | 1 | No |
 | PYTHONDONTWRITEBYTECODE | Prevent Python from writing pyc files | 1 | No |
+| LOG_LEVEL | Logging level (info/debug/warning/error) | info | No |
+| MAX_LOG_SIZE_MB | Maximum log file size before rotation | 100 | No |
+| BACKUP_RETENTION_DAYS | Number of days to keep backups | 7 | No |
+
+## Monitoring and Maintenance
+
+### Logging System
+
+The service includes a comprehensive logging system with:
+- Structured JSON logs for better parsing
+- Request/response logging with timing information
+- System metrics monitoring (CPU, memory, disk usage)
+- Error tracking and reporting
+- Automatic log rotation
+
+Log files are stored in:
+- `/app/logs/api.log`: API requests and application logs
+- `/app/logs/monitoring.log`: System metrics and performance data
+
+### Automated Maintenance
+
+The service includes automated maintenance features:
+- Daily backups at 2 AM
+- Log rotation when files exceed configured size
+- Automatic cleanup of old backups (configurable retention)
+- System metrics collection and monitoring
+- Health check monitoring
+
+### Backup System
+
+Automated backup system that handles:
+- Log files rotation and archival
+- Credit report files backup
+- Output text files backup
+- Environment configuration backup
+- Automatic cleanup of old backups
+
+Backup files are stored in `/app/backups/` with timestamp-based naming.
+
+For detailed monitoring and maintenance setup, see [VPS Setup Guide](docs/vps_setup.md).
 
 ## Development
 

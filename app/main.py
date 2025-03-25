@@ -1,12 +1,16 @@
 from fastapi import FastAPI, UploadFile, HTTPException, status
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, Any
 import os
 from pathlib import Path
 from app.services.pdf_service import PDFService
 from app.services.parser_service import ParserService
+from app.middleware.logging_middleware import logging_middleware, start_metrics_logging
+from app.utils.logging_config import api_logger
 
 app = FastAPI(
+    on_startup=[start_metrics_logging],
     title="Credit Report API",
     description="""
     API service for converting credit report files to structured JSON format.
@@ -31,6 +35,17 @@ app = FastAPI(
 pdf_service = PDFService()
 parser_service = ParserService()
 
+# Add middleware
+app.add_middleware(CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Add logging middleware
+app.middleware("http")(logging_middleware)
+
 @app.get("/health", status_code=status.HTTP_200_OK)
 async def health_check() -> Dict[str, str]:
     """
@@ -39,6 +54,8 @@ async def health_check() -> Dict[str, str]:
     Returns:
         dict: Status message indicating service health
     """
+    # Log health check
+    api_logger.info("Health check request")
     return {"status": "healthy"}
 
 @app.post("/api/v1/credit-report", 
@@ -67,9 +84,11 @@ async def upload_credit_report(
     """
     # Validate file format
     if not (file.filename.endswith('.pdf') or file.filename.endswith('.txt')):
+        error_msg = "Invalid file format. Only PDF and text files are accepted."
+        api_logger.error(error_msg, extra={'filename': file.filename})
         raise HTTPException(
             status_code=400,
-            detail="Invalid file format. Only PDF and text files are accepted."
+            detail=error_msg
         )
     
     try:
@@ -79,9 +98,11 @@ async def upload_credit_report(
         # Save uploaded file
         content = await file.read()
         if not content:
+            error_msg = "Empty file provided"
+            api_logger.error(error_msg, extra={'filename': file.filename})
             raise HTTPException(
                 status_code=400,
-                detail="Empty file provided"
+                detail=error_msg
             )
             
         with open(file_path, "wb") as f:
@@ -90,8 +111,20 @@ async def upload_credit_report(
         # Convert to text
         text_content = pdf_service.convert_pdf_to_text(file.filename, save_output=False)
         
+        # Log successful conversion
+        api_logger.info(
+            "PDF converted to text successfully",
+            extra={'filename': file.filename}
+        )
+
         # Parse text content
         parsed_data = await parser_service.parse_credit_report(text_content)
+        
+        # Log successful parsing
+        api_logger.info(
+            "Credit report parsed successfully",
+            extra={'filename': file.filename}
+        )
         
         # Cleanup temp files
         pdf_service.cleanup_temp_files(Path(file.filename).stem)
@@ -108,7 +141,15 @@ async def upload_credit_report(
         except:
             pass
             
+        error_msg = f"An error occurred while processing the file: {str(e)}"
+        api_logger.error(
+            error_msg,
+            extra={
+                'filename': file.filename,
+                'error': str(e)
+            }
+        )
         raise HTTPException(
             status_code=500,
-            detail=f"An error occurred while processing the file: {str(e)}"
+            detail=error_msg
         )
