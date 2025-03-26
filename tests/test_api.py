@@ -33,7 +33,20 @@ class TestAPI:
             assert response.status_code == 200
             assert "message" in response.json()
 
-    def test_upload_empty_request(self, client):
+    def test_upload_credit_report(self, client):
+        # Test uploading a valid credit report PDF file
+        test_file_path = "./credit-report.pdf"
+        if not os.path.exists(test_file_path):
+            pytest.skip(f"Test file not found at {test_file_path}")
+            
+        with open(test_file_path, "rb") as file:
+            files = {
+                "file": ("credit-report.pdf", file, "application/pdf")
+            }
+            response = client.post("/api/v1/credit-report", files=files)
+            
+            assert response.status_code == 200
+            assert "message" in response.json()
         # Test request without file
         response = client.post("/api/v1/credit-report")
         assert response.status_code == 422  # Unprocessable Entity
